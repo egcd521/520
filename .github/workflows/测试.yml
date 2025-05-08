@@ -1,0 +1,44 @@
+name: Build All Devices
+
+on:
+  workflow_dispatch:
+
+jobs:
+  ace2:
+    uses: ./.github/workflows/ace2.yml
+
+  acepro:
+    uses: ./.github/workflows/acepro.yml
+
+  ace2pro:
+    uses: ./.github/workflows/ace2pro.yml
+
+  ace3pro:
+    uses: ./.github/workflows/ace3pro.yml
+
+  ace3:
+    uses: ./.github/workflows/ace3.yml
+
+  ace3v:
+    uses: ./.github/workflows/ace3v.yml
+
+  ace5:
+    uses: ./.github/workflows/ace5.yml
+
+  ace5pro:
+    uses: ./.github/workflows/ace5pro.yml
+
+  oneplus13:
+    uses: ./.github/workflows/oneplus13整合.yml
+
+  oneplus12:
+   uses: ./.github/workflows/oneplus12.yml
+
+  oneplus11:
+   uses: ./.github/workflows/oneplus11.yml
+
+  oneplus12r:
+   uses: ./.github/workflows/oneplus12r.yml
+
+  padpro:
+   uses: ./.github/workflows/padpro.yml
