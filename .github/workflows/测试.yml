@@ -8,9 +8,9 @@ jobs:
     uses: ./.github/workflows/ace2.yml
     secrets: inherit
 
-  ace2pro:
-    uses: ./.github/workflows/ace2pro.yml
-    secrets: inherit
+  #ace2pro:
+    #uses: ./.github/workflows/ace2pro.yml
+    #secrets: inherit
     
   #acepro:
     #uses: ./.github/workflows/acepro.yml
