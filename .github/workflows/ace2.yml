@@ -130,21 +130,31 @@ jobs:
          echo "完成"
 
       - name: Apply Hide Stuff Patches
-        if: ${{ (github.event.inputs.SUSFS_ENABLED || 'false') == 'true' }}
+        if: ${{ inputs.SUSFS_ENABLED == 'true' }}
         run: |
          cd kernel_workspace/kernel_platform/common
+         echo "正在打隐藏应用补丁"    
+         if [ -f ../../SukiSU_patch/69_hide_stuff.patch ]; then
          cp ../../SukiSU_patch/69_hide_stuff.patch ./
-         echo "正在打隐藏应用补丁"
-         patch -p1 -F 3 < 69_hide_stuff.patch
+         patch -p1 -F 3 < 69_hide_stuff.patch || true
+         echo "隐藏补丁应用完成✅"
+         else
+         echo "未找到隐藏补丁文件，跳过"
+         fi
 
       - name: Apply New Hooks Patches
-        if: ${{ (github.event.inputs.VFS_patch_ENABLED || 'disable') == 'enable' }}
+        if: ${{ inputs.VFS_patch_ENABLED == 'enable' }}
         run: |
          cd kernel_workspace/kernel_platform/common
+         echo "正在打 VFS 补丁"
+         if [ -f ../../SukiSU_patch/hooks/new_hooks.patch ]; then
          cp ../../SukiSU_patch/hooks/new_hooks.patch ./
-         echo "正在打vfs补丁"
-         patch -p1 -F 3 < new_hooks.patch
-         echo "完成"
+         patch -p1 -F 3 < new_hooks.patch || true
+         echo "VFS 补丁应用完成✅"
+         else
+         echo "未找到 VFS 补丁文件，跳过"
+         fi
+
 
      # 以下代码根据需要取消注释启用 lz4kd
     #if [ "${{ inputs.KERNEL_VERSION }}" != "5.10" ]; then
