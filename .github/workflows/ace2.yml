@@ -62,11 +62,6 @@ jobs:
         run: |
          git config --global user.name "ychenxuan"
          git config --global user.email "3494167979@qq.com"
-         
-      - name: Debug Inputs
-        run: |
-         echo "SUSFS_ENABLED: '${{ github.event.inputs.SUSFS_ENABLED }}'"
-
 
       - name: Install dependencies
         run: |
