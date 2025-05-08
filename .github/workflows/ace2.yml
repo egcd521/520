@@ -2,46 +2,46 @@ name: Build OnePlus_ace2
 on:
   workflow_call:
     inputs:
-     CPU:
-    type: string
-    required: false
-    default: 'sm8475'
-  FEIL:
-    type: string
-    required: false
-    default: 'oneplus_ace2_v'
-  CPUD:
-    type: string
-    required: false
-    default: 'taro'
-  ANDROID_VERSION:
-    type: string
-    required: false
-    default: 'android12'
-  KERNEL_VERSION:
-    type: string
-    required: false
-    default: '5.10'
-  KERNEL_NAME:
-    type: string
-    required: false
-    default: '-android12-9-0-g0a04ff961c85'
-  kernelsu_variant:
-    type: string
-    required: false
-    default: 'SukiSU'
-  kernelsu_version:
-    type: string
-    required: false
-    default: 'main'
-  SUSFS_ENABLED:
-    type: boolean
-    required: false
-    default: true
-  VFS_patch_ENABLED:
-    type: string
-    required: false
-    default: 'enable'
+      CPU:
+        type: string
+        required: false
+        default: 'sm8475'
+      FEIL:
+        type: string
+        required: false
+        default: 'oneplus_ace2_v'
+      CPUD:
+        type: string
+        required: false
+        default: 'taro'
+      ANDROID_VERSION:
+        type: string
+        required: false
+        default: 'android12'
+      KERNEL_VERSION:
+        type: string
+        required: false
+        default: '5.10'
+      KERNEL_NAME:
+        type: string
+        required: false
+        default: '-android12-9-0-g0a04ff961c85'
+      kernelsu_variant:
+        type: string
+        required: false
+        default: 'SukiSU'
+      kernelsu_version:
+        type: string
+        required: false
+        default: 'main'
+      SUSFS_ENABLED:
+        type: boolean
+        required: false
+        default: true
+      VFS_patch_ENABLED:
+        type: string
+        required: false
+        default: 'enable'
 
 jobs:
   build:
