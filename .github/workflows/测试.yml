@@ -10,8 +10,8 @@ jobs:
   #acepro:
     #uses: ./.github/workflows/acepro.yml
 
-  #ace2pro:
-    #uses: ./.github/workflows/ace2pro.yml
+  ace2pro:
+    uses: ./.github/workflows/ace2pro.yml
 
   #ace3pro:
     #uses: ./.github/workflows/ace3pro.yml
