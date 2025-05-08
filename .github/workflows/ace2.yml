@@ -37,7 +37,7 @@ on:
       SUSFS_ENABLED:
         type: string
         required: false
-        default: true
+        default: 'true'
       VFS_patch_ENABLED:
         type: string
         required: false
