@@ -6,9 +6,33 @@ on:
 jobs:
   ace2:
     uses: ./.github/workflows/ace2.yml
+    with:
+      CPU: sm8475
+      FEIL: oneplus_ace2_v
+      CPUD: taro
+      ANDROID_VERSION: android12
+      KERNEL_VERSION: 5.10
+      KERNEL_NAME: -android12-9-0-g0a04ff961c85
+      kernelsu_variant: SukiSU
+      kernelsu_version: main
+      SUSFS_ENABLED: true
+      VFS_patch_ENABLED: enable
+    secrets: inherit
 
   ace2pro:
     uses: ./.github/workflows/ace2pro.yml
+    with:
+      CPU: sm8550
+      FEIL: oneplus_ace2pro_v
+      CPUD: kalama
+      ANDROID_VERSION: android13
+      KERNEL_VERSION: 5.15
+      KERNEL_NAME: -android13-8-0-01120-g3337bebe8205
+      kernelsu_variant: SukiSU
+      kernelsu_version: main
+      SUSFS_ENABLED: true
+      VFS_patch_ENABLED: enable
+    secrets: inherit
     
   #acepro:
     #uses: ./.github/workflows/acepro.yml
