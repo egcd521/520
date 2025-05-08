@@ -1,4 +1,4 @@
-name: Build OnePlus_ace2
+name: OnePlus_ace2
 on:
   workflow_call:
     inputs:
