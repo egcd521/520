@@ -4,7 +4,7 @@ on:
     inputs:
       CPU:
         type: string
-        required: false
+        required: true
         default: 'sm8550'
       FEIL:
         type: string
@@ -12,35 +12,35 @@ on:
         default: 'oneplus_ace2pro_v'
       CPUD:
         type: string
-        required: false
+        required: true
         default: 'kalama'
       ANDROID_VERSION:
         type: string
-        required: false
+        required: true
         default: 'android13'
       KERNEL_VERSION:
         type: string
-        required: false
+        required: true
         default: '5.15'
       KERNEL_NAME:
         type: string
-        required: false
+        required: true
         default: '-android13-8-0-01120-g3337bebe8205'
       kernelsu_variant:
         type: string
-        required: false
+        required: true
         default: 'SukiSU'
       kernelsu_version:
         type: string
-        required: false
+        required: true
         default: 'main'
       SUSFS_ENABLED:
         type: boolean
-        required: false
+        required: true
         default: true
       VFS_patch_ENABLED:
         type: string
-        required: false
+        required: true
         default: 'enable'
 jobs:
   build:
