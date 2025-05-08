@@ -205,19 +205,10 @@ jobs:
             LTO=thin ./kernel_platform/oplus/build/oplus_build_kernel.sh ${{ github.event.inputs.CPUD }} gki
           fi
 
-      - name: Generate Kernel Images
-        run: |
-         cd kernel_workspace/kernel_platform/out/msm-kernel-${{ github.event.inputs.CPUD }}
-         cp Image Image_original
-         curl -LO https://github.com/ShirkNeko/SukiSU_KernelPatch_patch/releases/download/0.11-beta/patch_linux
-         chmod +x patch_linux
-         ./patch_linux
-         mv oImage Image_kpm
-         mv Image_original Image
-
       - name: Make AnyKernel3
         run: |
           # 克隆 AnyKernel3 仓库
+          ls -l
           git clone https://github.com/Kernel-SU/AnyKernel3 --depth=1
           rm -rf ./AnyKernel3/.git
           if [[ "${{ inputs.CPU }}" == "sm8650" ]]; then
