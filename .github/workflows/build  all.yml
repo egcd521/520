@@ -40,6 +40,10 @@ jobs:
     uses: ./.github/workflows/oneplus13.yml
     secrets: inherit
 
+  oneplus13t:
+    uses: ./.github/workflows/oneplus13t.yml
+    secrets: inherit
+
   oneplus12:
     uses: ./.github/workflows/oneplus12.yml
     secrets: inherit
