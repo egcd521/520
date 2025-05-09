@@ -1,0 +1,33 @@
+name: Extra Build (ace5pro, oneplus13, ace3pro)
+
+on:
+  workflow_dispatch:
+    inputs:
+      ace5pro:
+        description: "Build ace5pro"
+        type: boolean
+        default: false
+      oneplus13:
+        description: "Build oneplus13"
+        type: boolean
+        default: false
+      ace3pro:
+        description: "Build ace3pro"
+        type: boolean
+        default: false
+
+jobs:
+  ace5pro:
+    if: ${{ github.event.inputs.ace5pro == 'true' }}
+    uses: ./.github/workflows/ace5pro.yml
+    secrets: inherit
+
+  oneplus13:
+    if: ${{ github.event.inputs.oneplus13 == 'true' }}
+    uses: ./.github/workflows/oneplus13.yml
+    secrets: inherit
+
+  ace3pro:
+    if: ${{ github.event.inputs.ace3pro == 'true' }}
+    uses: ./.github/workflows/ace3pro.yml
+    secrets: inherit
