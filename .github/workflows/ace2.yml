@@ -212,6 +212,7 @@ jobs:
          rm -rf ./AnyKernel3/.git
          cp kernel_workspace/kernel_platform/out/msm-kernel-sm8475-gki/dist/Image ./AnyKernel3/
          cp kernel_workspace/out/dist/Image ./AnyKernel3/
+         kernel_workspace/kernel_platform/out/msm-waipio-waipio-consolidate/dist/Image ./AnyKernel3/
          
          
       - name: Upload AnyKernel3
