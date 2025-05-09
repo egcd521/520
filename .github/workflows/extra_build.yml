@@ -1,7 +1,7 @@
-name: Extra Build (oneplus13，11，ace5，ace3pro)
+name: Extra (oneplus13，11，ace5，ace3pro)
 
 on:
-  workflow_dispatch:
+  workflow_call:
     inputs:
       ace5pro:
         description: "Build ace5pro"
