@@ -12,25 +12,25 @@ jobs:
     #uses: ./.github/workflows/ace2pro.yml
     #secrets: inherit
     
-  acepro:
-    uses: ./.github/workflows/acepro.yml
-    secrets: inherit
+  #acepro:
+    #uses: ./.github/workflows/acepro.yml
+    #secrets: inherit
 
-  ace3pro:
-    uses: ./.github/workflows/ace3pro.yml
-    secrets: inherit
+  #ace3pro:
+    #uses: ./.github/workflows/ace3pro.yml
+    #secrets: inherit
 
-  ace3:
-    uses: ./.github/workflows/ace3.yml
-    secrets: inherit
+  #ace3:
+    #uses: ./.github/workflows/ace3.yml
+    #secrets: inherit
 
-  ace3v:
-    uses: ./.github/workflows/ace3v.yml
-    secrets: inherit
+  #ace3v:
+    #uses: ./.github/workflows/ace3v.yml
+    #secrets: inherit
 
-  ace5:
-    uses: ./.github/workflows/ace5.yml
-    secrets: inherit
+  #ace5:
+    #uses: ./.github/workflows/ace5.yml
+    #secrets: inherit
 
   ace5pro:
     uses: ./.github/workflows/ace5pro.yml
@@ -40,18 +40,18 @@ jobs:
     uses: ./.github/workflows/oneplus13.yml
     secrets: inherit
 
-  oneplus12:
-   uses: ./.github/workflows/oneplus12.yml
-   secrets: inherit
+  #oneplus12:
+   #uses: ./.github/workflows/oneplus12.yml
+   #secrets: inherit
 
-  oneplus11:
-   uses: ./.github/workflows/oneplus11.yml
-   secrets: inherit
+  #oneplus11:
+   #uses: ./.github/workflows/oneplus11.yml
+   #secrets: inherit
 
-  oneplus12r:
-   uses: ./.github/workflows/oneplus12r.yml
-   secrets: inherit
+  #oneplus12r:
+   #uses: ./.github/workflows/oneplus12r.yml
+   #secrets: inherit
 
-  padpro:
-   uses: ./.github/workflows/padpro.yml
-   secrets: inherit
+  #padpro:
+   #uses: ./.github/workflows/padpro.yml
+   #secrets: inherit
