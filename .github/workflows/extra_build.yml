@@ -1,4 +1,4 @@
-name: Extra (oneplus13，11，ace5，ace3pro)
+name: Extra (oneplus13,11,13t,ace5,ace3pro)
 
 on:
   workflow_dispatch:
@@ -9,6 +9,10 @@ on:
         default: false
       oneplus13:
         description: "Build oneplus13"
+        type: boolean
+        default: false
+      oneplus13t:
+        description: "Build oneplus13t"
         type: boolean
         default: false
       ace3pro:
@@ -29,6 +33,11 @@ jobs:
   oneplus13:
     if: ${{ github.event.inputs.oneplus13 == 'true' }}
     uses: ./.github/workflows/oneplus13.yml
+    secrets: inherit
+
+  oneplus13t:
+    if: ${{ github.event.inputs.oneplus13t == 'true' }}
+    uses: ./.github/workflows/oneplus13t.yml
     secrets: inherit
 
   ace3pro:
