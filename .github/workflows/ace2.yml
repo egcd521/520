@@ -207,17 +207,15 @@ jobs:
 
       - name: Make AnyKernel3
         run: |
-          # 克隆 AnyKernel3 仓库
-          ls -l
-          git clone https://github.com/Kernel-SU/AnyKernel3 --depth=1
-          rm -rf ./AnyKernel3/.git
-          if [[ "${{ inputs.CPU }}" == "sm8650" ]]; then
-            cp kernel_workspace/kernel_platform/out/msm-kernel-${{ github.event.inputs.CPUD }}-gki/dist/Image ./AnyKernel3/
-          else
-            cp kernel_workspace/out/dist/Image ./AnyKernel3/         
+         ls -l
+         git clone https://github.com/Kernel-SU/AnyKernel3 --depth=1
+         rm -rf ./AnyKernel3/.git
+         cp kernel_workspace/kernel_platform/out/msm-kernel-sm8475-gki/dist/Image ./AnyKernel3/
+         cp kernel_workspace/out/dist/Image ./AnyKernel3/
+         
          
       - name: Upload AnyKernel3
         uses: actions/upload-artifact@v4
         with:
-         name: AnyKernel3_KernelSU_${{ env.KSUVER }}_${{ github.event.inputs.FEIL }}
+         name: AnyKernel3_sukisu_${{ env.KSUVER }}_ace2
          path: ./AnyKernel3/*
