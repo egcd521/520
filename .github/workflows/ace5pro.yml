@@ -18,7 +18,7 @@ on:
         type: string
         required: false
         default: 'android15'
-      KERNEL_VERSION:
+      KERNELVERSION:
         type: string
         required: false
         default: '6.6'
