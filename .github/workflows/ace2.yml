@@ -191,7 +191,8 @@ jobs:
       - name: Add make name
         run: |
          cd kernel_workspace/kernel_platform
-         sed -i 's|res="\$res\$(cat "\$file")"|res="${{ github.event.inputs.KERNEL_NAME }}"|g' ./common/scripts/setlocalversion
+         KERNEL_NAME="${{ github.event.inputs.KERNEL_NAME }}"
+         sed -i '$s|echo "\$res"|echo "$KERNEL_NAME"|' ./common/scripts/setlocalversion
 
       - name: Build kernel
         run: |
