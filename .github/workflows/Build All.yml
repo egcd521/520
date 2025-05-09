@@ -1,0 +1,132 @@
+name: Build All
+
+on:
+  workflow_dispatch:
+    inputs:
+      ace2:
+        description: "Build ace2"
+        type: boolean
+        default: false
+      ace2pro:
+        description: "Build ace2pro"
+        type: boolean
+        default: false
+      acepro:
+        description: "Build acepro"
+        type: boolean
+        default: false
+      ace3pro:
+        description: "Build ace3pro"
+        type: boolean
+        default: false
+      ace3:
+        description: "Build ace3"
+        type: boolean
+        default: false
+      ace3v:
+        description: "Build ace3v"
+        type: boolean
+        default: false
+      ace5:
+        description: "Build ace5"
+        type: boolean
+        default: false
+      ace5pro:
+        description: "Build ace5pro"
+        type: boolean
+        default: false
+      oneplus13:
+        description: "Build oneplus13"
+        type: boolean
+        default: false
+      oneplus12:
+        description: "Build oneplus12"
+        type: boolean
+        default: false
+      oneplus11:
+        description: "Build oneplus11"
+        type: boolean
+        default: false
+      oneplus12r:
+        description: "Build oneplus12r"
+        type: boolean
+        default: false
+      padpro:
+        description: "Build padpro"
+        type: boolean
+        default: false
+      extra_build:
+        description: "Run extra build (ace5pro, oneplus13, ace3pro)"
+        type: boolean
+        default: false
+
+jobs:
+  ace2:
+    if: ${{ github.event.inputs.ace2 == 'true' }}
+    uses: ./.github/workflows/ace2.yml
+    secrets: inherit
+
+  ace2pro:
+    if: ${{ github.event.inputs.ace2pro == 'true' }}
+    uses: ./.github/workflows/ace2pro.yml
+    secrets: inherit
+
+  acepro:
+    if: ${{ github.event.inputs.acepro == 'true' }}
+    uses: ./.github/workflows/acepro.yml
+    secrets: inherit
+
+  ace3pro:
+    if: ${{ github.event.inputs.ace3pro == 'true' }}
+    uses: ./.github/workflows/ace3pro.yml
+    secrets: inherit
+
+  ace3:
+    if: ${{ github.event.inputs.ace3 == 'true' }}
+    uses: ./.github/workflows/ace3.yml
+    secrets: inherit
+
+  ace3v:
+    if: ${{ github.event.inputs.ace3v == 'true' }}
+    uses: ./.github/workflows/ace3v.yml
+    secrets: inherit
+
+  ace5:
+    if: ${{ github.event.inputs.ace5 == 'true' }}
+    uses: ./.github/workflows/ace5.yml
+    secrets: inherit
+
+  ace5pro:
+    if: ${{ github.event.inputs.ace5pro == 'true' }}
+    uses: ./.github/workflows/ace5pro.yml
+    secrets: inherit
+
+  oneplus13:
+    if: ${{ github.event.inputs.oneplus13 == 'true' }}
+    uses: ./.github/workflows/oneplus13.yml
+    secrets: inherit
+
+  oneplus12:
+    if: ${{ github.event.inputs.oneplus12 == 'true' }}
+    uses: ./.github/workflows/oneplus12.yml
+    secrets: inherit
+
+  oneplus11:
+    if: ${{ github.event.inputs.oneplus11 == 'true' }}
+    uses: ./.github/workflows/oneplus11.yml
+    secrets: inherit
+
+  oneplus12r:
+    if: ${{ github.event.inputs.oneplus12r == 'true' }}
+    uses: ./.github/workflows/oneplus12r.yml
+    secrets: inherit
+
+  padpro:
+    if: ${{ github.event.inputs.padpro == 'true' }}
+    uses: ./.github/workflows/padpro.yml
+    secrets: inherit
+
+  extra_build:
+    if: ${{ github.event.inputs.extra_build == 'true' }}
+    uses: ./.github/workflows/extra_build.yml
+    secrets: inherit
