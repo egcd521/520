@@ -187,6 +187,10 @@ jobs:
           git add -A && git commit -a -m "BUILD Kernel"
           echo "✅ SUSFS & defconfig 设置完成"
 
+      - name: Set kernel version environment variable
+        run: |
+         echo "KERNEL_NAME=${{ inputs.KERNEL_NAME }}" >> $GITHUB_ENV
+
       - name: Add make name
         run: |
          cd kernel_workspace/kernel_platform
