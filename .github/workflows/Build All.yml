@@ -15,10 +15,6 @@ on:
         description: "Build acepro"
         type: boolean
         default: false
-      ace3pro:
-        description: "Build ace3pro"
-        type: boolean
-        default: false
       ace3:
         description: "Build ace3"
         type: boolean
@@ -31,20 +27,8 @@ on:
         description: "Build ace5"
         type: boolean
         default: false
-      ace5pro:
-        description: "Build ace5pro"
-        type: boolean
-        default: false
-      oneplus13:
-        description: "Build oneplus13"
-        type: boolean
-        default: false
       oneplus12:
         description: "Build oneplus12"
-        type: boolean
-        default: false
-      oneplus11:
-        description: "Build oneplus11"
         type: boolean
         default: false
       oneplus12r:
@@ -76,11 +60,6 @@ jobs:
     uses: ./.github/workflows/acepro.yml
     secrets: inherit
 
-  ace3pro:
-    if: ${{ github.event.inputs.ace3pro == 'true' }}
-    uses: ./.github/workflows/ace3pro.yml
-    secrets: inherit
-
   ace3:
     if: ${{ github.event.inputs.ace3 == 'true' }}
     uses: ./.github/workflows/ace3.yml
@@ -96,24 +75,9 @@ jobs:
     uses: ./.github/workflows/ace5.yml
     secrets: inherit
 
-  ace5pro:
-    if: ${{ github.event.inputs.ace5pro == 'true' }}
-    uses: ./.github/workflows/ace5pro.yml
-    secrets: inherit
-
-  oneplus13:
-    if: ${{ github.event.inputs.oneplus13 == 'true' }}
-    uses: ./.github/workflows/oneplus13.yml
-    secrets: inherit
-
   oneplus12:
     if: ${{ github.event.inputs.oneplus12 == 'true' }}
     uses: ./.github/workflows/oneplus12.yml
-    secrets: inherit
-
-  oneplus11:
-    if: ${{ github.event.inputs.oneplus11 == 'true' }}
-    uses: ./.github/workflows/oneplus11.yml
     secrets: inherit
 
   oneplus12r:
