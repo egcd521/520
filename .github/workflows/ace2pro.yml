@@ -192,7 +192,7 @@ jobs:
         run: |
          cd kernel_workspace/kernel_platform
          sed -i "/stable_scmversion_cmd/s/-maybe-dirty//g" ./build/kernel/kleaf/impl/stamp.bzl
-         sed -i '$s|echo "\$res"|echo "${{ inputs.KERNEL_NAME }}"|' ./common/scripts/setlocalversion
+         sed -i '$s|echo "\$res"|echo "-android13-8-0-01120-g3337bebe8205"|' ./common/scripts/setlocalversion
          
       - name: Build kernel
         run: |
