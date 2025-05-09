@@ -3,6 +3,10 @@ name: Extra (oneplus13,11,13t,ace5,ace3pro)
 on:
   workflow_dispatch:
     inputs:
+      kernel_name:
+        description: "内核版本名 (例如 6.6.30-android15-8-0-gOdaac0320c00-4k)"
+        required: false
+        default: ''
       ace5pro:
         description: "Build ace5pro"
         type: boolean
@@ -29,23 +33,33 @@ jobs:
     if: ${{ github.event.inputs.ace5pro == 'true' }}
     uses: ./.github/workflows/ace5pro.yml
     secrets: inherit
+    with:
+      KERNEL_NAME: ${{ github.event.inputs.kernel_name }}
 
   oneplus13:
     if: ${{ github.event.inputs.oneplus13 == 'true' }}
     uses: ./.github/workflows/oneplus13.yml
     secrets: inherit
+    with:
+      KERNEL_NAME: ${{ github.event.inputs.kernel_name }}
 
   oneplus13t:
     if: ${{ github.event.inputs.oneplus13t == 'true' }}
     uses: ./.github/workflows/oneplus13t.yml
     secrets: inherit
+    with:
+      KERNEL_NAME: ${{ github.event.inputs.kernel_name }}
 
   ace3pro:
     if: ${{ github.event.inputs.ace3pro == 'true' }}
     uses: ./.github/workflows/ace3pro.yml
     secrets: inherit
+    with:
+      KERNEL_NAME: ${{ github.event.inputs.kernel_name }}
 
   oneplus11:
     if: ${{ github.event.inputs.oneplus11 == 'true' }}
     uses: ./.github/workflows/oneplus11.yml
     secrets: inherit
+    with:
+      KERNEL_NAME: ${{ github.event.inputs.kernel_name }}
