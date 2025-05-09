@@ -39,10 +39,6 @@ on:
         description: "Build padpro"
         type: boolean
         default: false
-      extra_build:
-        description: "Run extra build (ace5pro, oneplus13, ace3pro)"
-        type: boolean
-        default: false
 
 jobs:
   ace2:
@@ -88,9 +84,4 @@ jobs:
   padpro:
     if: ${{ github.event.inputs.padpro == 'true' }}
     uses: ./.github/workflows/padpro.yml
-    secrets: inherit
-
-  extra_build:
-    if: ${{ github.event.inputs.extra_build == 'true' }}
-    uses: ./.github/workflows/extra_build.yml
     secrets: inherit
