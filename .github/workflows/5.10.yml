@@ -3,10 +3,6 @@ name: "[5.10] ACE2/ACEPRO Build"
 on:
   workflow_dispatch:
     inputs:
-      kernel_name:
-        description: "内核版本名 (留空使用默认)"
-        required: false
-        default: '-android12-9-0-g0a04ff961c85'
       ace2:
         description: "构建 ace2"
         type: boolean
