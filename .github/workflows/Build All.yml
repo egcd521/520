@@ -1,4 +1,4 @@
-name: Build All（加入自选分工作流）
+name: Build All (分内核版本分类)
 
 on:
   workflow_dispatch:
@@ -7,54 +7,54 @@ on:
         description: "内核版本名 (不输入则默认)"
         required: false
         default: ''
+        
+      # === 内核版本 5.10 ===
       ace2:
         description: "Build ace2"
-        type: boolean
-        default: false
-      ace2pro:
-        description: "Build ace2pro"
         type: boolean
         default: false
       acepro:
         description: "Build acepro"
         type: boolean
         default: false
+
+      # === 内核版本 5.15 ===
       ace3:
         description: "Build ace3"
-        type: boolean
-        default: false
-      ace3v:
-        description: "Build ace3v"
-        type: boolean
-        default: false
-      ace5:
-        description: "Build ace5"
-        type: boolean
-        default: false
-      oneplus12:
-        description: "Build oneplus12"
         type: boolean
         default: false
       oneplus12r:
         description: "Build oneplus12r"
         type: boolean
         default: false
+      ace2pro:
+        description: "Build ace2pro"
+        type: boolean
+        default: false
+
+      # === 内核版本 6.1 ===
+      oneplus12:
+        description: "Build oneplus12"
+        type: boolean
+        default: false
+      ace3v:
+        description: "Build ace3v"
+        type: boolean
+        default: false
       padpro:
         description: "Build padpro"
         type: boolean
         default: false
+      ace5:
+        description: "Build ace5"
+        type: boolean
+        default: false
 
 jobs:
+  # === 内核版本 5.10 ===
   ace2:
     if: ${{ github.event.inputs.ace2 == 'true' }}
     uses: ./.github/workflows/ace2.yml
-    secrets: inherit
-    with:
-      KERNEL_NAME: ${{ github.event.inputs.kernel_name }}
-
-  ace2pro:
-    if: ${{ github.event.inputs.ace2pro == 'true' }}
-    uses: ./.github/workflows/ace2pro.yml
     secrets: inherit
     with:
       KERNEL_NAME: ${{ github.event.inputs.kernel_name }}
@@ -66,30 +66,10 @@ jobs:
     with:
       KERNEL_NAME: ${{ github.event.inputs.kernel_name }}
 
+  # === 内核版本 5.15 ===
   ace3:
     if: ${{ github.event.inputs.ace3 == 'true' }}
     uses: ./.github/workflows/ace3.yml
-    secrets: inherit
-    with:
-      KERNEL_NAME: ${{ github.event.inputs.kernel_name }}
-
-  ace3v:
-    if: ${{ github.event.inputs.ace3v == 'true' }}
-    uses: ./.github/workflows/ace3v.yml
-    secrets: inherit
-    with:
-      KERNEL_NAME: ${{ github.event.inputs.kernel_name }}
-
-  ace5:
-    if: ${{ github.event.inputs.ace5 == 'true' }}
-    uses: ./.github/workflows/ace5.yml
-    secrets: inherit
-    with:
-      KERNEL_NAME: ${{ github.event.inputs.kernel_name }}
-
-  oneplus12:
-    if: ${{ github.event.inputs.oneplus12 == 'true' }}
-    uses: ./.github/workflows/oneplus12.yml
     secrets: inherit
     with:
       KERNEL_NAME: ${{ github.event.inputs.kernel_name }}
@@ -101,9 +81,38 @@ jobs:
     with:
       KERNEL_NAME: ${{ github.event.inputs.kernel_name }}
 
+  ace2pro:
+    if: ${{ github.event.inputs.ace2pro == 'true' }}
+    uses: ./.github/workflows/ace2pro.yml
+    secrets: inherit
+    with:
+      KERNEL_NAME: ${{ github.event.inputs.kernel_name }}
+
+  # === 内核版本 6.1 ===
+  oneplus12:
+    if: ${{ github.event.inputs.oneplus12 == 'true' }}
+    uses: ./.github/workflows/oneplus12.yml
+    secrets: inherit
+    with:
+      KERNEL_NAME: ${{ github.event.inputs.kernel_name }}
+
+  ace3v:
+    if: ${{ github.event.inputs.ace3v == 'true' }}
+    uses: ./.github/workflows/ace3v.yml
+    secrets: inherit
+    with:
+      KERNEL_NAME: ${{ github.event.inputs.kernel_name }}
+
   padpro:
     if: ${{ github.event.inputs.padpro == 'true' }}
     uses: ./.github/workflows/padpro.yml
+    secrets: inherit
+    with:
+      KERNEL_NAME: ${{ github.event.inputs.kernel_name }}
+
+  ace5:
+    if: ${{ github.event.inputs.ace5 == 'true' }}
+    uses: ./.github/workflows/ace5.yml
     secrets: inherit
     with:
       KERNEL_NAME: ${{ github.event.inputs.kernel_name }}
