@@ -1,0 +1,43 @@
+name: "[6.6] ace5pro/oneplus13"
+
+on:
+  workflow_dispatch:
+    inputs:
+      kernel_name:
+        description: "内核版本名 (留空使用默认)"
+        required: false
+        default: '6.6-default'
+      ace5pro:
+        description: "构建 ace5pro"
+        type: boolean
+        default: false
+      oneplus13:
+        description: "构建 oneplus13"
+        type: boolean
+        default: false
+      oneplus13t:
+        description: "构建 oneplus13t"
+        type: boolean
+        default: false
+
+jobs:
+  ace5pro-build:
+    if: ${{ github.event.inputs.ace5pro == 'true' }}
+    uses: ./.github/workflows/ace5pro.yml
+    secrets: inherit
+    with:
+      KERNEL_NAME: ${{ github.event.inputs.kernel_name }}
+
+  oneplus13-build:
+    if: ${{ github.event.inputs.oneplus13 == 'true' }}
+    uses: ./.github/workflows/oneplus13.yml
+    secrets: inherit
+    with:
+      KERNEL_NAME: ${{ github.event.inputs.kernel_name }}
+
+  oneplus13t-build:
+    if: ${{ github.event.inputs.oneplus13t == 'true' }}
+    uses: ./.github/workflows/oneplus13t.yml
+    secrets: inherit
+    with:
+      KERNEL_NAME: ${{ github.event.inputs.kernel_name }}
