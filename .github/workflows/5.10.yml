@@ -1,0 +1,32 @@
+name: "[5.10] ACE2/ACEPRO Build"
+
+on:
+  workflow_dispatch:
+    inputs:
+      kernel_name:
+        description: "内核版本名 (留空使用默认)"
+        required: false
+        default: '5.10-default'
+      ace2:
+        description: "构建 ace2"
+        type: boolean
+        default: false
+      acepro:
+        description: "构建 acepro"
+        type: boolean
+        default: false
+
+jobs:
+  ace2-build:
+    if: ${{ github.event.inputs.ace2 == 'true' }}
+    uses: ./.github/workflows/ace2.yml
+    secrets: inherit
+    with:
+      KERNEL_NAME: ${{ github.event.inputs.kernel_name }}
+
+  acepro-build:
+    if: ${{ github.event.inputs.acepro == 'true' }}
+    uses: ./.github/workflows/acepro.yml
+    secrets: inherit
+    with:
+      KERNEL_NAME: ${{ github.event.inputs.kernel_name }}
