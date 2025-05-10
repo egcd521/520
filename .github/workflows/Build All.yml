@@ -1,0 +1,46 @@
+name: Build All（按内核版本分类）
+
+on:
+  workflow_dispatch:
+    inputs:
+      kernel_name:
+        description: "内核版本名（留空使用默认）"
+        required: false
+        default: ''
+
+      build_5.10:
+        description: "构建 5.10 机型（ace2、acepro）"
+        type: boolean
+        default: false
+
+      build_5.15:
+        description: "构建 5.15 机型（ace3、oneplus12r、ace2pro）"
+        type: boolean
+        default: false
+
+      build_6.1:
+        description: "构建 6.1 机型（oneplus12、ace3v、padpro、ace5）"
+        type: boolean
+        default: false
+
+jobs:
+  build_510_group:
+    if: ${{ github.event.inputs.build_510 == 'true' }}
+    uses: ./.github/workflows/5.10.yml
+    secrets: inherit
+    with:
+      KERNEL_NAME: ${{ github.event.inputs.kernel_name }}
+
+  build_515_group:
+    if: ${{ github.event.inputs.build_515 == 'true' }}
+    uses: ./.github/workflows/5.15.yml
+    secrets: inherit
+    with:
+      KERNEL_NAME: ${{ github.event.inputs.kernel_name }}
+
+  build_61_group:
+    if: ${{ github.event.inputs.build_61 == 'true' }}
+    uses: ./.github/workflows/6.1.yml
+    secrets: inherit
+    with:
+      KERNEL_NAME: ${{ github.event.inputs.kernel_name }}
