@@ -6,7 +6,7 @@ on:
       kernel_name:
         description: "内核版本名 (不输入则默认)"
         required: false
-        default: ''
+        default: '-android15-8-g013ec21bba94-383916444'
       ace5pro:
         description: "Build ace5pro"
         type: boolean
