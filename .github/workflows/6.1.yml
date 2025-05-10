@@ -6,7 +6,7 @@ on:
       kernel_name:
         description: "内核版本名 (留空使用默认)"
         required: false
-        default: '6.1-default'
+        default: '-android14-11-o-g1132d864665d'
       ace5:
         description: "构建 ace5"
         type: boolean
