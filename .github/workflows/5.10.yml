@@ -1,0 +1,21 @@
+name: Build 5.10 Devices
+
+on:
+  workflow_call:
+    inputs:
+      KERNEL_NAME:
+        required: false
+        type: string
+
+jobs:
+  ace2:
+    uses: ./.github/workflows/ace2.yml
+    secrets: inherit
+    with:
+      KERNEL_NAME: ${{ inputs.KERNEL_NAME }}
+
+  acepro:
+    uses: ./.github/workflows/acepro.yml
+    secrets: inherit
+    with:
+      KERNEL_NAME: ${{ inputs.KERNEL_NAME }}
