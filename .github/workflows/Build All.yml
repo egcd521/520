@@ -3,6 +3,10 @@ name: Build All（加入自选分工作流）
 on:
   workflow_dispatch:
     inputs:
+      kernel_name:
+        description: "内核版本名 (例如 6.6.30-android15-8-0-gOdaac0320c00-4k)"
+        required: false
+        default: '-android15-8-g013ec21bba94-abogki383916444'
       ace2:
         description: "Build ace2"
         type: boolean
@@ -45,43 +49,61 @@ jobs:
     if: ${{ github.event.inputs.ace2 == 'true' }}
     uses: ./.github/workflows/ace2.yml
     secrets: inherit
+    with:
+      KERNEL_NAME: ${{ github.event.inputs.kernel_name }}
 
   ace2pro:
     if: ${{ github.event.inputs.ace2pro == 'true' }}
     uses: ./.github/workflows/ace2pro.yml
     secrets: inherit
+    with:
+      KERNEL_NAME: ${{ github.event.inputs.kernel_name }}
 
   acepro:
     if: ${{ github.event.inputs.acepro == 'true' }}
     uses: ./.github/workflows/acepro.yml
     secrets: inherit
+    with:
+      KERNEL_NAME: ${{ github.event.inputs.kernel_name }}
 
   ace3:
     if: ${{ github.event.inputs.ace3 == 'true' }}
     uses: ./.github/workflows/ace3.yml
     secrets: inherit
+    with:
+      KERNEL_NAME: ${{ github.event.inputs.kernel_name }}
 
   ace3v:
     if: ${{ github.event.inputs.ace3v == 'true' }}
     uses: ./.github/workflows/ace3v.yml
     secrets: inherit
+    with:
+      KERNEL_NAME: ${{ github.event.inputs.kernel_name }}
 
   ace5:
     if: ${{ github.event.inputs.ace5 == 'true' }}
     uses: ./.github/workflows/ace5.yml
     secrets: inherit
+    with:
+      KERNEL_NAME: ${{ github.event.inputs.kernel_name }}
 
   oneplus12:
     if: ${{ github.event.inputs.oneplus12 == 'true' }}
     uses: ./.github/workflows/oneplus12.yml
     secrets: inherit
+    with:
+      KERNEL_NAME: ${{ github.event.inputs.kernel_name }}
 
   oneplus12r:
     if: ${{ github.event.inputs.oneplus12r == 'true' }}
     uses: ./.github/workflows/oneplus12r.yml
     secrets: inherit
+    with:
+      KERNEL_NAME: ${{ github.event.inputs.kernel_name }}
 
   padpro:
     if: ${{ github.event.inputs.padpro == 'true' }}
     uses: ./.github/workflows/padpro.yml
     secrets: inherit
+    with:
+      KERNEL_NAME: ${{ github.event.inputs.kernel_name }}
