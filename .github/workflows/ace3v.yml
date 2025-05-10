@@ -77,8 +77,8 @@ jobs:
       - name: Initialize repo and sync
         run: |
          mkdir kernel_workspace && cd kernel_workspace
-         repo init -u https://github.com/OnePlusOSS/kernel_manifest.git -b oneplus/sm7675 -m oneplus_ace_3v_v.xml --depth=1
-         repo sync
+         repo init -u https://github.com/OnePlusOSS/kernel_manifest.git -b refs/heads/oneplus/${{ inputs.CPU }} -m ${{ inputs.FEIL }}.xml --depth=1
+         repo --trace sync -c -j$(nproc --all) --no-tags
          rm kernel_platform/common/android/abi_gki_protected_exports_* || echo "No protected exports!"
          rm kernel_platform/msm-kernel/android/abi_gki_protected_exports_* || echo "No protected exports!"
          sed -i 's/ -dirty//g' kernel_platform/common/scripts/setlocalversion || true
@@ -188,11 +188,14 @@ jobs:
          sed -i 's/check_defconfig//' kernel_workspace/kernel_platform/common/build.config.gki
          echo "✅ SUSFS & defconfig 设置完成"
 
+      - name: Set kernel version environment variable
+        run: |
+         echo "KERNEL_NAME=${{ inputs.KERNEL_NAME }}" >> $GITHUB_ENV
+
       - name: Add make name
         run: |
          cd kernel_workspace/kernel_platform
-         sed -i "/stable_scmversion_cmd/s/-maybe-dirty//g" ./build/kernel/kleaf/impl/stamp.bzl
-         sed -i '$s|echo "\$res"|echo "-android14-11-o-ab125860"|' ./common/scripts/setlocalversion
+         sed -i 's/res="\$res\$(cat "\$file")"/res="${{ inputs.KERNEL_NAME }}"/g' ./common/scripts/setlocalversion
          
       - name: Build kernel
         run: |
