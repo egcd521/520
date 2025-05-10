@@ -6,7 +6,7 @@ on:
       kernel_name:
         description: "内核版本名 (留空使用默认)"
         required: false
-        default: '6.6-default'
+        default: '-android15-8-g013ec21bba94-abogki383916444'
       ace5pro:
         description: "构建 ace5pro"
         type: boolean
