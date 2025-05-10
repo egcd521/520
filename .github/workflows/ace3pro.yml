@@ -190,7 +190,11 @@ jobs:
 
       - name: Set kernel version environment variable
         run: |
+         if [ -z "${{ inputs.KERNEL_NAME }}" ]; then
+         echo "KERNEL_NAME=-android14-11-o-g1132d864665d" >> $GITHUB_ENV
+         else
          echo "KERNEL_NAME=${{ inputs.KERNEL_NAME }}" >> $GITHUB_ENV
+         fi
 
       - name: Add make name
         run: |
