@@ -21,12 +21,8 @@ jobs:
     if: ${{ github.event.inputs.ace2 == 'true' }}
     uses: ./.github/workflows/ace2.yml
     secrets: inherit
-    with:
-      KERNEL_NAME: ${{ github.event.inputs.kernel_name }}
 
   acepro-build:
     if: ${{ github.event.inputs.acepro == 'true' }}
     uses: ./.github/workflows/acepro.yml
     secrets: inherit
-    with:
-      KERNEL_NAME: ${{ github.event.inputs.kernel_name }}
