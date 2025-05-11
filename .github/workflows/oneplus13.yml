@@ -9,7 +9,7 @@ on:
       FEIL:
         type: string
         required: false
-        default: 'oneplus_13'
+        default: 'oneplus_13t'
       CPUD:
         type: string
         required: false
