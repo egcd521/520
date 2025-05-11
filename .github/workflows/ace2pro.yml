@@ -154,7 +154,7 @@ jobs:
       - name: Add SUSFS Configuration Settings
         run: |
          set -e
-         DEFCONFIG=kernel_workspace/kernel_platform/common/arch/arm64/configs/gki_defconfig.gki
+         DEFCONFIG=kernel_workspace/kernel_platform/common/arch/arm64/configs/gki_defconfig
          {
          echo "CONFIG_KSU=y"
          echo "CONFIG_KSU_SUSFS=y"
