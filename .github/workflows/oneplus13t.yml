@@ -150,7 +150,7 @@ jobs:
          fi
 
       - name: Add SUSFS Configuration Settings
-         run: |
+        run: |
           cd kernel_workspace/kernel_platform
           echo "CONFIG_KSU=y" >> ./common/arch/arm64/configs/gki_defconfig
           echo "CONFIG_KPM=y" >> ./common/arch/arm64/configs/gki_defconfig
