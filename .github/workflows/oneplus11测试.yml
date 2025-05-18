@@ -253,8 +253,10 @@ jobs:
           if [[ "5.15" == "6.1" || "5.15" == "6.6" ]]; then
           ./kernel_platform/build_with_bazel.py -t kalama gki --action_env=KSU_VERSION
           else
-          LTO=thin SYSTEM_DLKM_RE_SIGN=0 BUILD_SYSTEM_DLKM=0 KMI_SYMBOL_LIST_STRICT_MODE=0 VERBOSE=1 ./kernel_platform/oplus/build/oplus_build_kernel.sh kalama gki
-          fi
+          # 清除干扰变量
+          unset BRANCH KSUVER
+          # 强制指定 LTO 为 none（测试兼容性）
+          LTO=none ./kernel_platform/oplus/build/oplus_build_kernel.sh kalama gki
          
       - name: Make AnyKernel3
         run: |
