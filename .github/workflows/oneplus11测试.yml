@@ -206,6 +206,9 @@ jobs:
           echo "CONFIG_KSU_SUSFS_HIDE_KSU_SUSFS_SYMBOLS=y" >> ./common/arch/arm64/configs/gki_defconfig
           echo "CONFIG_KSU_SUSFS_SPOOF_CMDLINE_OR_BOOTCONFIG=y" >> ./common/arch/arm64/configs/gki_defconfig
           echo "CONFIG_KSU_SUSFS_OPEN_REDIRECT=y" >> ./common/arch/arm64/configs/gki_defconfig
+          # 在 Android 13 的 gki_defconfig 中手动添加必要配置
+          echo "CONFIG_MODULE_SIG=n" >> ./common/arch/arm64/configs/gki_defconfig
+          echo "CONFIG_ZSMALLOC=y" >> ./common/arch/arm64/configs/gki_defconfig
 
           #if [ "${{ github.event.inputs.KERNEL_VERSION }}" = "5.10" ]; then
           #  echo "CONFIG_ZSMALLOC=y" >> ./common/arch/arm64/configs/gki_defconfig
