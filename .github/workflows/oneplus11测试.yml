@@ -247,10 +247,10 @@ jobs:
       - name: Build kernel
         run: |
           cd kernel_workspace
-          if [[ "${{ github.event.inputs.KERNEL_VERSION }}" == "6.1" || "${{ github.event.inputs.KERNEL_VERSION }}" == "6.6" ]]; then
-            ./kernel_platform/build_with_bazel.py -t ${{ github.event.inputs.CPUD }} gki --action_env=KSU_VERSION
+          if [[ "5.15" == "6.1" || "5.15" == "6.6" ]]; then
+          ./kernel_platform/build_with_bazel.py -t kalama gki --action_env=KSU_VERSION
           else
-            LTO=thin ... VERBOSE=1 ./kernel_platform/oplus/build/oplus_build_kernel.sh ${{ github.event.inputs.CPUD }} gki
+          LTO=thin SYSTEM_DLKM_RE_SIGN=0 BUILD_SYSTEM_DLKM=0 KMI_SYMBOL_LIST_STRICT_MODE=0 VERBOSE=1 ./kernel_platform/oplus/build/oplus_build_kernel.sh kalama gki
           fi
          
       - name: Make AnyKernel3
