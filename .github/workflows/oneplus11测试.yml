@@ -257,6 +257,7 @@ jobs:
           unset BRANCH KSUVER
           # 强制指定 LTO 为 none（测试兼容性）
           LTO=none ./kernel_platform/oplus/build/oplus_build_kernel.sh kalama gki
+          fi  # 添加闭合关键字
          
       - name: Make AnyKernel3
         run: |
