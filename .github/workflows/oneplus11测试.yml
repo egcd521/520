@@ -151,14 +151,6 @@ jobs:
           cd ./common
           patch -p1 < 50_add_susfs_in_gki-${{ github.event.inputs.ANDROID_VERSION }}-${{ github.event.inputs.KERNEL_VERSION }}.patch || true
           echo "完成"
-          
-      - name: Apply Hide Stuff Patches
-        if: ${{ github.event.inputs.SUSFS_ENABLED == 'true' }}
-        run: |
-          cd kernel_workspace/kernel_platform/common
-          #cp ../../SukiSU_patch/69_hide_stuff.patch ./
-          #echo "正在打隐藏应用补丁"
-          #patch -p1 -F 3 < 69_hide_stuff.patch
          
       - name: Apply New Hooks Patches
         if: ${{ github.event.inputs.VFS_patch_ENABLED == 'enable' }}
@@ -209,32 +201,6 @@ jobs:
           # 在 Android 13 的 gki_defconfig 中手动添加必要配置
           echo "CONFIG_MODULE_SIG=n" >> ./common/arch/arm64/configs/gki_defconfig
           echo "CONFIG_ZSMALLOC=y" >> ./common/arch/arm64/configs/gki_defconfig
-
-          #if [ "${{ github.event.inputs.KERNEL_VERSION }}" = "5.10" ]; then
-          #  echo "CONFIG_ZSMALLOC=y" >> ./common/arch/arm64/configs/gki_defconfig
-          #  echo "CONFIG_ZRAM=y" >> ./common/arch/arm64/configs/gki_defconfig
-          #  echo "CONFIG_MODULE_SIG=n" >> ./common/arch/arm64/configs/gki_defconfig
-          #  echo "CONFIG_CRYPTO_LZO=y" >> ./common/arch/arm64/configs/gki_defconfig
-          #  echo "CONFIG_ZRAM_DEF_COMP_LZ4KD=y" >> ./common/arch/arm64/configs/gki_defconfig
-          #fi
-
-          #if [ "${{ github.event.inputs.KERNEL_VERSION }}" != "6.6" ] && [ "${{ github.event.inputs.KERNEL_VERSION }}" != "5.10" ]; then
-          #  sed -i 's/CONFIG_MODULE_SIG=y/CONFIG_MODULE_SIG=n/g' ./common/arch/arm64/configs/gki_defconfig
-          #  sed -i 's/CONFIG_ZSMALLOC=m/CONFIG_ZSMALLOC=y/g' ./common/arch/arm64/configs/gki_defconfig
-          #  sed -i 's/CONFIG_ZRAM=m/CONFIG_ZRAM=y/g' ./common/arch/arm64/configs/gki_defconfig
-          #fi
-
-          #if [ "${{ github.event.inputs.KERNEL_VERSION }}" = "6.6" ]; then
-          #  echo "CONFIG_ZSMALLOC=y" >> ./common/arch/arm64/configs/gki_defconfig
-          #  sed -i 's/CONFIG_ZRAM=m/CONFIG_ZRAM=y/g' ./common/arch/arm64/configs/gki_defconfig
-          #fi
-
-          #if grep -q "CONFIG_ZSMALLOC=y" ./common/arch/arm64/configs/gki_defconfig && grep -q "CONFIG_ZRAM=y" ./common/arch/arm64/configs/gki_defconfig; then
-          #  echo "CONFIG_CRYPTO_LZ4HC=y" >> ./common/arch/arm64/configs/gki_defconfig
-          #  echo "CONFIG_CRYPTO_LZ4K=y" >> ./common/arch/arm64/configs/gki_defconfig
-          #  echo "CONFIG_CRYPTO_LZ4KD=y" >> ./common/arch/arm64/configs/gki_defconfig
-          #  echo "CONFIG_CRYPTO_842=y" >> ./common/arch/arm64/configs/gki_defconfig
-          #fi
           
           # Remove check_defconfig
           sed -i 's/check_defconfig//' ./common/build.config.gki
@@ -250,14 +216,8 @@ jobs:
       - name: Build kernel
         run: |
           cd kernel_workspace
-          if [[ "5.15" == "6.1" || "5.15" == "6.6" ]]; then
-          ./kernel_platform/build_with_bazel.py -t kalama gki --action_env=KSU_VERSION
-          else
-          # 清除干扰变量
-          unset BRANCH KSUVER
-          # 强制指定 LTO 为 none（测试兼容性）
-          LTO=none ./kernel_platform/oplus/build/oplus_build_kernel.sh kalama gki
-          fi  # 添加闭合关键字
+          LTO=thin ./kernel_platform/oplus/build/oplus_build_kernel.sh ${{ github.event.inputs.CPUD }} gki
+          fi
          
       - name: Make AnyKernel3
         run: |
